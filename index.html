@@ -7,7 +7,7 @@
         viejo_audio = document.getElementById("reproductor")
         audio_padre = viejo_audio.parentNode
         audio_padre.removeChild(viejo_audio)
-        nuevo_audio = document.createElement("audio")
+        nuevo_audio = document.createElement("video")
         nuevo_audio.setAttribute("id", "reproductor")
         nuevo_audio.setAttribute("controls", "controls")
         source = document.createElement("source")
@@ -35,7 +35,8 @@
 </script>
 
 <div id="reproductorBox"></div>
-<select id="selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+<label for="selectRadio">Seleciona una Radio: </label>
+<select name="selectRadio" id="selectTrack" onchange="cambiarTrack(this.options[this.selectedIndex]);" >
     <option value="https://cloudstream2036.conectarhosting.com/8168/stream">Radio Verdad</option>
     <option value="http://radiocret.net:8000/live">Radio Cret</option>
     <option value="https://ssl.rockhost.com/proxy/restauracion?mp=/mp3_320">Radio Elim</option>
