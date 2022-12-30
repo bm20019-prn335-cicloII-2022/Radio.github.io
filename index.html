@@ -1,1 +1,46 @@
-<h1>Hola Mindp</h1>
+<!DOCTYPE html>
+<html>
+
+<script>
+    function cambiarTrack(track) {
+        var value = track.getAttribute("value")
+        viejo_audio = document.getElementById("reproductor")
+        audio_padre = viejo_audio.parentNode
+        audio_padre.removeChild(viejo_audio)
+        nuevo_audio = document.createElement("audio")
+        nuevo_audio.setAttribute("id", "reproductor")
+        nuevo_audio.setAttribute("controls", "controls")
+        source = document.createElement("source")
+        source.setAttribute("src", value)
+        source.setAttribute("type", "audio/mpeg")
+        source.setAttribute("id", "reproductorSource")
+        nuevo_audio.appendChild(source)
+        audio_padre.appendChild(nuevo_audio)
+    }
+
+    function cargarReproductor() {
+        var select = document.getElementById("selectTrack")
+        var value = select.options[0].getAttribute("value")
+        nuevo_audio = document.createElement("audio")
+        nuevo_audio.setAttribute("id", "reproductor")
+        nuevo_audio.setAttribute("controls", "controls")
+        source = document.createElement("source")
+        source.setAttribute("src", value)
+        source.setAttribute("type", "audio/mpeg")
+        source.setAttribute("id", "reproductorSource")
+        nuevo_audio.appendChild(source)
+        padre = document.getElementById("reproductorBox")
+        padre.appendChild(nuevo_audio)
+    }
+</script>
+
+<div id="reproductorBox"></div>
+<select id="selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+    <option value="https://cloudstream2036.conectarhosting.com/8168/stream">Radio Verdad</option>
+    <option value="http://radiocret.net:8000/live">Radio Cret</option>
+    <option value="https://ssl.rockhost.com/proxy/restauracion?mp=/mp3_320">Radio Elim</option>
+    <option value="https://s2.radio.co/s3a7dc3d82/listen">Radio Bautista</option>
+</select>
+<script>cargarReproductor();</script>
+
+</html>
