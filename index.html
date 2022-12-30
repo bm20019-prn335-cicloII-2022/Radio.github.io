@@ -21,7 +21,7 @@
     function cargarReproductor() {
         var select = document.getElementById("selectTrack")
         var value = select.options[0].getAttribute("value")
-        nuevo_audio = document.createElement("audio")
+        nuevo_audio = document.createElement("video")
         nuevo_audio.setAttribute("id", "reproductor")
         nuevo_audio.setAttribute("controls", "controls")
         source = document.createElement("source")
