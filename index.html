@@ -1,47 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8">
+  <title>FMRadio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700'><link rel="stylesheet" href="./style.css">
 
-<script>
-    function cambiarTrack(track) {
-        var value = track.getAttribute("value")
-        viejo_audio = document.getElementById("reproductor")
-        audio_padre = viejo_audio.parentNode
-        audio_padre.removeChild(viejo_audio)
-        nuevo_audio = document.createElement("video")
-        nuevo_audio.setAttribute("id", "reproductor")
-        nuevo_audio.setAttribute("controls", "controls")
-        source = document.createElement("source")
-        source.setAttribute("src", value)
-        source.setAttribute("type", "audio/mpeg")
-        source.setAttribute("id", "reproductorSource")
-        nuevo_audio.appendChild(source)
-        audio_padre.appendChild(nuevo_audio)
-    }
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="music-player">
+  <!--<div style="background-image: url(https://i.imgur.com/yqB0erk.jpg);" class="album"></div>-->
+  
+  <div class="info">
+    
+    <div class="left">
+      <a href="javascript:;" class="icon-shuffle"></a>
+      <a href="javascript:;" class="icon-heart"></a>
+    </div>
+    
+    <div class="center">
+      <div class="jp-playlist">
+        <ul>
+          <li></li>
+        </ul>
+      </div> 
+    </div>
+    
+    <div class="right">
+      <a href="javascript:;" class="icon-repeat"></a>
+      <a href="javascript:;" class="icon-share"></a>
+    </div>
+    
+    <div class="progress"></div>
+    
+  </div>
+      
+  <div class="controls">
+    <div class="current jp-current-time">00:00</div>
+    <div class="play-controls">
+      <a href="javascript:;" class="icon-previous jp-previous" title="previous"></a>
+      <a href="javascript:;" class="icon-play jp-play" title="play"></a>
+      <a href="javascript:;" class="icon-pause jp-pause" title="pause"></a>
+      <a href="javascript:;" class="icon-next jp-next" title="next"></a>
+    </div>
+    <div class="volume-level">
+      <a href="javascript:;" class="icon-volume-up" title="max volume"></a>
+      <a href="javascript:;" class="icon-volume-down" title="mute"></a>
+    </div>
+  </div>
+  
+  <div id="jquery_jplayer" class="jp-jplayer"></div>
+  
+</div>
 
-    function cargarReproductor() {
-        var select = document.getElementById("selectTrack")
-        var value = select.options[0].getAttribute("value")
-        nuevo_audio = document.createElement("video")
-        nuevo_audio.setAttribute("id", "reproductor")
-        nuevo_audio.setAttribute("controls", "controls")
-        source = document.createElement("source")
-        source.setAttribute("src", value)
-        source.setAttribute("type", "audio/mpeg")
-        source.setAttribute("id", "reproductorSource")
-        nuevo_audio.appendChild(source)
-        padre = document.getElementById("reproductorBox")
-        padre.appendChild(nuevo_audio)
-    }
-</script>
+<p class="copyrights">
+  Designed by <a href='https://dribbble.com/shots/1680792-Music-Player-Widget-Free-PSD'>Vladimyr Kondriianenko</a> and coded by <a href='https://codepen.io/mustafaismail22/'>Mustafa ismail</a>
+</p>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/jquery.jplayer/jquery.jplayer.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/add-on/jplayer.playlist.min.js'></script><script  src="./script.js"></script>
 
-<div id="reproductorBox"></div>
-<label for="selectRadio">Seleciona una Radio: </label>
-<select name="selectRadio" id="selectTrack" onchange="cambiarTrack(this.options[this.selectedIndex]);" >
-    <option value="https://cloudstream2036.conectarhosting.com/8168/stream">Radio Verdad</option>
-    <option value="http://radiocret.net:8000/live">Radio Cret</option>
-    <option value="https://ssl.rockhost.com/proxy/restauracion?mp=/mp3_320">Radio Elim</option>
-    <option value="https://s2.radio.co/s3a7dc3d82/listen">Radio Bautista</option>
-</select>
-<script>cargarReproductor();</script>
-
+</body>
 </html>
